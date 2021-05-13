@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 import javax.imageio.ImageIO;
@@ -9,8 +7,8 @@ import javax.swing.*;
 public class Square extends JPanel {
 
     private Token token;
-    private BufferedImage queenImage;
-    private BufferedImage crossImage;
+    private Image queenScaled;
+    private Image crossScaled;
 
     private enum Token {NONE, QUEEN, CROSS}
 
@@ -19,8 +17,10 @@ public class Square extends JPanel {
         setBackground(color);
         try
         {
-            queenImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("queen-icon.png")));
-            crossImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("cross-icon.png")));
+            BufferedImage queenImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("queen-icon.png")));
+            queenScaled = getScaledImage(queenImage);
+            BufferedImage crossImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("cross-icon.png")));
+            crossScaled = getScaledImage(crossImage);
         }
         catch (Exception ex)
         {
@@ -49,29 +49,30 @@ public class Square extends JPanel {
     {
         super.paintComponent(g);
         if (token == Token.QUEEN)
-            renderScaledImage(g, queenImage);
+            renderImage(g, queenScaled);
         if (token == Token.CROSS)
-            renderScaledImage(g, crossImage);
+            renderImage(g, crossScaled);
     }
 
-    private void renderScaledImage(Graphics g, BufferedImage image)
+    private void renderImage(Graphics g, Image image)
     {
-        Image imageToRender = getScaledImage(image);
-
-        int imageHeight = imageToRender.getHeight(this);
+        int imageHeight = image.getHeight(this);
         int squareHeight = getHeight();
         int x = (squareHeight - imageHeight) / 2;
 
-        int imageWidth = imageToRender.getWidth(this);
+        int imageWidth = image.getWidth(this);
         int squareWidth = getWidth();
         int y = (squareWidth - imageWidth) / 2;
 
-        g.drawImage(imageToRender, x, y, this);
+        g.drawImage(image, x, y, this);
     }
 
     public Image getScaledImage(BufferedImage image)
     {
-        return image.getScaledInstance((int) (getWidth() * 0.8), (int) (getHeight() * 0.8), Image.SCALE_SMOOTH);
+        return image.getScaledInstance((int) ((Settings.WIDTH * 0.8 / Settings.INITIAL_SIZE) * 0.8),
+                (int) ((Settings.HEIGHT / Settings.INITIAL_SIZE) * 0.8),
+                Image.SCALE_SMOOTH
+        );
     }
 
 }

@@ -3,9 +3,6 @@ import java.awt.*;
 
 public class MainApp {
 
-    private final int WIDTH = 800;
-    private final int HEIGHT = (int) (WIDTH * 0.8);
-
     public MainApp()
     {
         JFrame window = new JFrame();
@@ -25,7 +22,7 @@ public class MainApp {
 
         window.setVisible(true);
         window.setResizable(false);
-        window.setSize(WIDTH, HEIGHT);
+        window.setSize(Settings.WIDTH, Settings.HEIGHT);
         window.setTitle("Queens Problem");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

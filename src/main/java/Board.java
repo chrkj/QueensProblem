@@ -25,17 +25,16 @@ public class Board extends JPanel {
                 System.err.format("Col: %d, Row: %d%n", col, row);
                 System.err.println(col + " " + row);
                 solver.insertQueen(col, row);
-
-                //
             }
         });
         setupBoardState();
+        repaint();
     }
 
     @Override
-    public void paint(Graphics g)
+    public void paintComponent(Graphics g)
     {
-        super.paint(g);
+        super.paintComponent(g);
         removeAll();
         reCalculate();
         for (int i = 0; i < size; i++)
@@ -96,7 +95,6 @@ public class Board extends JPanel {
                     boardState[i][j].setQueen();
                 if (board[i][j] == 0)
                     boardState[i][j].setEmpty();
-
             }
         }
     }
