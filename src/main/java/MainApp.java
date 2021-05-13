@@ -16,17 +16,18 @@ public class MainApp {
         c.weighty = 1;
         c.fill = GridBagConstraints.BOTH;
 
-        Board board = new Board(5);
+        Board board = new Board(Settings.INITIAL_SIZE);
         window.add(board, c);
 
-        Menu menu = new Menu();
+        Menu menu = new Menu(board);
         c.weightx = 0.20;
         window.add(menu, c);
 
+        window.setVisible(true);
         window.setResizable(false);
         window.setSize(WIDTH, HEIGHT);
         window.setTitle("Queens Problem");
-        window.setVisible(true);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 
