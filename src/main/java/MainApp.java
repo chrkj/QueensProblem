@@ -22,7 +22,7 @@ public class MainApp
         window.add(menu, c);
 
         window.setVisible(true);
-        window.setResizable(false);
+        window.setResizable(true);
         window.setTitle("Queens Problem");
         window.setSize(Settings.WIDTH, Settings.HEIGHT);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

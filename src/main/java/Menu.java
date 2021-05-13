@@ -14,7 +14,7 @@ public class Menu extends JPanel
             board.reset();
             System.err.println("reset");
         });
-        pathCount = new JLabel("Path count: " + board.solver.getPathCount());
+        pathCount = new JLabel("Path count: " + board.solver.getPathCount(), JLabel.CENTER);
         add(pathCount);
         add(resetButton);
     }
