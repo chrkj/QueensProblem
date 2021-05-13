@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class Board extends JPanel
 {
+    public Solver solver;
     private final int size;
-    private Solver solver;
     private final Square[][] boardState;
 
     public Board(int size)
@@ -27,6 +27,7 @@ public class Board extends JPanel
                 System.err.format("Col: %d, Row: %d%n", col, row);
                 System.err.println(col + " " + row);
                 solver.insertQueen(col, row);
+                Menu.pathCount.setText("Path count: " + solver.getPathCount());
             }
         });
         setupBoardState();

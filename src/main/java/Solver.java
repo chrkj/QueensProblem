@@ -225,4 +225,9 @@ public class Solver
         return board;
     }
 
+    public int getPathCount()
+    {
+        return (int) solutionBdd.pathCount();
+    }
+
 }
