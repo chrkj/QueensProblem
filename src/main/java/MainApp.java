@@ -1,7 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
-public class MainApp {
+public class MainApp
+{
 
     public MainApp()
     {
@@ -9,11 +10,11 @@ public class MainApp {
         window.setLayout(new GridBagLayout());
 
         GridBagConstraints c = new GridBagConstraints();
-        c.weightx = 0.80;
-        c.weighty = 1;
         c.fill = GridBagConstraints.BOTH;
+        c.weighty = 1;
 
         Board board = new Board(Settings.INITIAL_SIZE);
+        c.weightx = 0.80;
         window.add(board, c);
 
         Menu menu = new Menu(board);
@@ -22,8 +23,8 @@ public class MainApp {
 
         window.setVisible(true);
         window.setResizable(false);
-        window.setSize(Settings.WIDTH, Settings.HEIGHT);
         window.setTitle("Queens Problem");
+        window.setSize(Settings.WIDTH, Settings.HEIGHT);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

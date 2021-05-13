@@ -5,15 +5,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Square extends JPanel {
-
     private Token token;
     private Image queenScaled;
     private Image crossScaled;
 
-    private enum Token {NONE, QUEEN, CROSS}
+    private enum Token { NONE, QUEEN, CROSS }
 
     public Square(Color color)
     {
+        token = Token.NONE;
         setBackground(color);
         try
         {
@@ -26,7 +26,6 @@ public class Square extends JPanel {
         {
             ex.printStackTrace();
         }
-        token = Token.NONE;
     }
 
     public void setQueen()

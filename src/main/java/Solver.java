@@ -2,11 +2,10 @@ import net.sf.javabdd.BDD;
 import net.sf.javabdd.JFactory;
 import net.sf.javabdd.BDDFactory;
 
-public class Solver {
-
+public class Solver
+{
     private int size;
     private int[][] board;
-
     private BDD True;
     private BDD False;
     private BDD solutionBdd;
@@ -32,9 +31,7 @@ public class Solver {
         for (int col = 0; col < size; col++)
         {
             for (int row = 0; row < size; row++)
-            {
                 bddBoard[col][row] = factory.ithVar(row * size + col);
-            }
         }
 
         // Setup rules
@@ -66,9 +63,7 @@ public class Solver {
         {
             BDD orBdd = False;
             for (int row = 0; row < size; row++)
-            {
                 orBdd = orBdd.apply(bddBoard[col][row], BDDFactory.or);
-            }
             solutionBdd = solutionBdd.apply(orBdd, BDDFactory.and);
         }
     }
@@ -186,13 +181,9 @@ public class Solver {
         // Checking for which cells placing a queen would be an illegal move
         // ignoring cell already containing a queen
         for (int col = 0; col < size; col++)
-        {
             for (int row = 0; row < size; row++)
-            {
                 if (isInvalidCell(col, row) && board[col][row] == 0)
                     board[col][row] = -1;
-            }
-        }
     }
 
     private boolean isInvalidCell(final int col, final int row)
@@ -224,13 +215,9 @@ public class Solver {
     private void placeRemaining()
     {
         for (int col = 0; col < size; col++)
-        {
             for (int row = 0; row < size; row++)
-            {
                 if (board[col][row] == 0)
                     board[col][row] = 1;
-            }
-        }
     }
 
     public int[][] getBoard()
