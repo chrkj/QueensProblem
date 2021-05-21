@@ -1,6 +1,6 @@
-import net.sf.javabdd.BDD;
-import net.sf.javabdd.JFactory;
-import net.sf.javabdd.BDDFactory;
+import com.github.javabdd.BDD;
+import com.github.javabdd.JFactory;
+import com.github.javabdd.BDDFactory;
 
 public class Solver
 {

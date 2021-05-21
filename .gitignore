@@ -1,3 +1,13 @@
-﻿.idea
-out
-QueensProblem.iml
+﻿### Java ###
+*.class
+
+### Gradle ###
+.gradle
+/build/
+
+### Intellij ###
+.idea
+/out/
+
+
+
