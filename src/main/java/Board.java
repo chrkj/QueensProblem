@@ -39,7 +39,7 @@ public class Board extends JPanel
     {
         super.paintComponent(g);
         removeAll();
-        reCalculate();
+        updateBoard();
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 add(boardState[i][j]);
@@ -61,7 +61,6 @@ public class Board extends JPanel
                         square = new Square(Settings.boardColor1);
                     else
                         square = new Square(Settings.boardColor2);
-
                     if (board[i][j] == -1)
                         square.setCross();
                     if (board[i][j] == 1)
@@ -86,7 +85,7 @@ public class Board extends JPanel
         }
     }
 
-    public void reCalculate()
+    public void updateBoard()
     {
         int[][] board = solver.getBoard();
         for (int i = 0; i < size; i++)
@@ -103,7 +102,7 @@ public class Board extends JPanel
         }
     }
 
-    public void reset()
+    public void resetBoard()
     {
         solver = new Solver();
         solver.initializeBoard(size);

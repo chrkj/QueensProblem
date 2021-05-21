@@ -13,7 +13,7 @@ public class Menu extends JPanel
         Button resetButton = new Button("Reset");
         resetButton.addActionListener(event ->
         {
-            board.reset();
+            board.resetBoard();
             System.err.println("reset");
             updatePathCount();
         });
