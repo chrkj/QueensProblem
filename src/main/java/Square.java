@@ -68,8 +68,8 @@ public class Square extends JPanel {
 
     public Image getScaledImage(BufferedImage image)
     {
-        return image.getScaledInstance((int) ((Settings.WIDTH * 0.8 / Settings.INITIAL_SIZE) * 0.8),
-                (int) ((Settings.HEIGHT / Settings.INITIAL_SIZE) * 0.8),
+        return image.getScaledInstance((int) ((Settings.WIDTH * 0.8 / Settings.INITIAL_SIZE) * 0.7),
+                (int) ((Settings.HEIGHT / Settings.INITIAL_SIZE) * 0.7),
                 Image.SCALE_SMOOTH
         );
     }
