@@ -8,6 +8,10 @@ public class Square extends JPanel {
     private Token token;
     private Image queenScaled;
     private Image crossScaled;
+    private final int queenImageHeight;
+    private final int queenImageWidth;
+    private final int crossImageHeight;
+    private final int crossImageWidth;
 
     private enum Token { NONE, QUEEN, CROSS }
 
@@ -26,6 +30,11 @@ public class Square extends JPanel {
         {
             ex.printStackTrace();
         }
+        // TODO: Optimize this
+        crossImageHeight = crossScaled.getHeight(this);
+        crossImageWidth = crossScaled.getWidth(this);
+        queenImageHeight = queenScaled.getHeight(this);
+        queenImageWidth = queenScaled.getWidth(this);
     }
 
     public void setQueen()
@@ -48,21 +57,17 @@ public class Square extends JPanel {
     {
         super.paintComponent(g);
         if (token == Token.QUEEN)
-            renderImage(g, queenScaled);
+            renderImage(g, queenScaled, queenImageHeight, queenImageWidth);
         if (token == Token.CROSS)
-            renderImage(g, crossScaled);
+            renderImage(g, crossScaled, crossImageHeight, crossImageWidth);
     }
 
-    private void renderImage(Graphics g, Image image)
+    private void renderImage(Graphics g, Image image, int height, int width)
     {
-        int imageHeight = image.getHeight(this);
         int squareHeight = getHeight();
-        int x = (squareHeight - imageHeight) / 2;
-
-        int imageWidth = image.getWidth(this);
+        int x = (squareHeight - height) / 2;
         int squareWidth = getWidth();
-        int y = (squareWidth - imageWidth) / 2;
-
+        int y = (squareWidth - width) / 2;
         g.drawImage(image, x, y, this);
     }
 
