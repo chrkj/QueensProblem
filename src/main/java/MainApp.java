@@ -3,7 +3,6 @@ import javax.swing.*;
 
 public class MainApp
 {
-
     public MainApp()
     {
         JFrame window = new JFrame();
